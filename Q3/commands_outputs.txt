@@ -1,0 +1,65 @@
+1. File Creation 
+echo "This is some sample text for testing links." > sample_data.txt
+//created a file sample_data.txt in my home directory containing sample text using "echo"
+cat sample_data.txt
+//verified content using "cat"
+
+2. Hard Link Creation 
+ln sample_data.txt sample_hard.txt
+//created a hard link of sample_data.txt called sample_hard.txt so both files share the same data using "ln"
+
+3. Symbolic Link Creation 
+ln -s sample_data.txt sample_soft.txt
+//created a symbolic link sample_soft.txt that points to sample_data.txt using "ln -s"; this is a separate inode and is just a reference to the original file
+
+4. Inode Verification
+ls -i sample_data.txt sample_hard.txt sample_soft.txt
+Output: 230161 sample_data.txt 230161 sample_hard.txt 230803 sample_soft.txt
+//listed inode numbers to see which files share the same inode using "ls -i"; this helps differentiate hard and soft links
+
+5. Inode Analysis
+sample_data.txt and sample_hard.txt share the same inode because a hard link points directly to the same data on disk; sample_soft.txt has a different inode because symbolic links are separate files that reference the original
+
+6. File Metadata Inspection
+ls -l sample_data.txt
+Output: -rw-r--r-- 2 coder coder 43 Dec 30 21:02 sample_data.txt
+//displayed detailed metadata (permissions, owner, size, timestamps) of sample_data.txt using "ls -l"
+
+7. Disk Usage Check
+du -h | tail -n 10
+Output:
+87K   ./noVNC/vendor/pako/lib
+90K   ./noVNC/vendor/pako
+7.0K  ./noVNC/vendor/browser-es-module-loader/src
+553K  ./noVNC/vendor/browser-es-module-loader/dist
+564K  ./noVNC/vendor/browser-es-module-loader
+1.7M  ./noVNC/vendor
+3.1M  ./noVNC
+13K   ./Desktop.save
+14K   ./install
+9.7M  .
+//displayed disk usage "du" of the home directory in a human-readable "-h" format to see space consumed by files and directories (shows only the last 10 lines of the output usign "tail -n 10" to make it easier to read)
+  
+8. File Size Overview
+ls -lh 
+(check output in screenshot) 
+//listed all files in the home directory with human-readable "-lh" sizes to check each file size
+  
+9. Link Deletion Test
+rm sample_soft.txt
+//deleted the symbolic link sample_soft.txt using "rm"
+ls -l sample_data.txt
+Output: -rw-r--r-- 2 coder coder 43 Dec 30 21:02 sample_data.txt
+//verified that the original file sample_data.txt is unaffected (because soft links are separate files)
+
+10. Disk Utility Demonstration
+du -sh 
+Output: 9.7M
+//showed total disk space "du" used by the home directory in human-readable format "-sh"
+df -h
+(check output in screenshot) 
+//showed available and used space on all mounted filesystems in a readable format; unlike du, which measures the space used by specific directories/files, df gives an overall view of storage usage per partition
+Docker storage shows actual disk usage for workspace
+Use% indicates how full each filesystem is, helping monitor storage health
+"tmpfs" are mostly free
+
