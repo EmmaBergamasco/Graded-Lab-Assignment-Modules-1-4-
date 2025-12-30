@@ -1,0 +1,53 @@
+1. Project Workspace Setup
+mkdir documents
+//created a directory named documents inside my home directory using "mkdir"
+
+2. File Creation
+cd documents
+touch plan.txt
+//navigated into the documents directory using "cd" and created an empty file named plan.txt using "touch"
+
+3. Content Addition
+echo "This file contains notes for Command Line Interfaces project" > plan.txt
+cat plan.txt
+Output: This file contains notes for Command Line Interfaces project
+//added sample text into plan.txt using "echo" and verified the content using "cat" 
+
+4. File Metadata Verification
+ls -l plan.txt
+Output: -rw-r -- r -- 1 coder coder 61 Dec 30 20:25 plan.txt
+//displayed file permissions and ownership details, confirming that my username (coder) owns the file using "ls -l"
+
+5. File Duplication
+cp plan.txt plan_copy.txt
+//created a duplicate of plan.txt named plan_copy.txt using "cp"
+
+6. Directory Renaming
+cd 
+//back to home directory using "cd" (cannot rename directory when inside it)
+mv documents project_documents
+//renamed the documents directory to project_documents using "mv" to better reflect the project scope
+
+7. Archival Structure
+mkdir project_documents/archive
+//created a subdirectory named archive inside project_documents for storing backup files using "mkdir"
+
+8. File Organization
+mv project_documents/plan_copy.txt project_documents/archive/
+//moved plan_copy.txt into the archive subdirectory to organize project files using "mv"
+
+9. Recursive Listing
+ls -R project_documents
+
+Output:
+project_documents:
+archive plan.txt
+
+project_documents/archive:
+plan_copy.txt
+//listed all files and subdirectories recursively to display the complete directory structure using "ls -R"
+
+10. Path Verification
+realpath project_documents/archive/plan_copy.txt
+Output: /home/coder/project_documents/archive/plan_copy.txt
+//displayed path of plan_copy.txt after it was moved into the archive directory using "realpath"
