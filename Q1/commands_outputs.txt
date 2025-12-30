@@ -1,0 +1,126 @@
+1. User Identity Verification
+whoami
+Output: coder
+//verified my login username using "whoami"
+groups
+Output: coder sudo
+//verified all the groups my account belongs to using "groups"
+
+2. Workspace Validation
+pwd
+Output: /home/coder
+//checked the current working directory using "pwd"
+ls -l
+Output:
+total 26
+drwxr-xr-x  4 coder  coder    4 Dec 30 15:41    coursera
+drwxr-xr-x  3 coder  coder    3 Jun 26 2023     data
+drwxrwxrwx  4 nobody nogroup  6144 Dec 30 15:41 Desktop
+drwxr-xr-x  2 root   root     6144 Dec 16 07:28 Desktop-ro
+drwxr-xr-x  2 coder  coder    4 Jun 26 2023     Desktop. save
+drwxr-xr-x  2 coder  coder    2 Dec 30 15:41    Documents
+drwxr-xr-X  2 coder  coder    2 Dec 30 15:41    Downloads
+drwxr-xr-X  2 coder  coder    13 Jun 26 2023    install
+drwxr-xr-x  2 coder  coder    2 Dec 30 15:41    Music
+drwxr-xr-x  20 coder coder    21 Jun 26 2023    node_modules
+drwxr-xr-x  9 coder  coder    20 Jun 26 2023    noVNC
+-rw-r -- r -- 1 coder coder   75 Jun 26 2023    package. json
+rw-r -- r -- 1 coder coder    11316 Jun 26 2023 package-lock. json
+drwxr-xr-x  2 coder  coder    2 Dec 30 15:41    Pictures
+drwxr-xr-x  2 coder  coder    2 Dec 30 15:41    Public
+drwxr-xr-X  2 coder  coder    2 Dec 30 15:41    Templates
+drwxr-xr-x  2 coder  coder    2 Dec 30 15:41    Videos
+-rw-r -- r -- 1 coder coder   60 Dec 30 15:41   wm. log
+rwxr-xr-X   1 coder  coder    308 Jun 26 2023   wm_startup. sh
+drwxr-xr-X  2 coder  coder    2 Jun 26 2023     workspace
+rwxr-xr-X   1 coder  coder    314 Jun 26 2023   wrapper_process. sh
+//listed all files using "ls -l" to inspect permissions, sizes, and modification dates
+
+3. Environment Confirmation File
+echo "Linux user environment verified" > user_info.txt
+//created a file called user_info.txt with a verification message using "echo" 
+cat user_info.txt
+Output: Linux user environment verified
+//confirmed file user_info.txt content using "cat"
+
+4. File Integrity Check
+wc -m user_info.txt
+Output: 31 user_info.txt
+//counted the number of characters in the file to ensure it contains the correct text
+
+5. Learning the Tools
+man mkdir
+Output: No manual entry for mkdir
+See 'man 7 undocumented' for help when manual pages are not available.
+//opened the manual page for "mkdir" using "man", but manual not found
+mkdir --help
+Output: coder@c178c7a602e5 :~ $ mkdir -- help
+Usage: mkdir [OPTION] ... DIRECTORY ...
+Create the DIRECTORY(ies), if they do not already exist.
+Mandatory arguments to long options are mandatory for short options too.
+-m, -- mode=MODE  set file mode (as in chmod), not a=rwx - umask
+-p, -- parents    no error if existing, make parent directories as needed
+-v, -- verbose    print a message for each created directory
+-Z                set SELinux security context of each created directory to the default type
+-- context [=CTX] like -Z, or if CTX is specified then set the SELinux or SMACK security context to CTX
+-- help           display this help and exit
+-- version        output version information and exit
+GNU coreutils online help: <http://www.gnu.org/software/coreutils/>
+Full documentation at: <http://www.gnu.org/software/coreutils/mkdir>
+or available locally via: info ' (coreutils) mkdir invocation'
+//used alternative command "--help" to learn about mkdir. A useful option is "-p", which allows creating nested directories in a single command if the parent directories don’t exist
+
+6. Home Directory Inspection
+ls -l $HOME | sort
+Output:
+drwxrwxrwx 4 nobody nogroup 6144 Dec 30 15:41 Desktop
+drwxr-xr-x 20 coder coder 21 Jun 26 2023 node_modules
+drwxr-xr-x 2 coder coder 13 Jun 26 2023 install
+drwxr-xr-x 2 coder coder 2 Dec 30 15:41 Documents
+drwxr-xr-x 2 coder coder 2 Dec 30 15:41 Downloads
+drwxr-xr-x 2 coder coder 2 Dec 30 15:41 Music
+drwxr-xr-X 2 coder coder 2 Dec 30 15:41 Pictures
+drwxr-xr-x 2 coder coder 2 Dec 30 15:41 Public
+drwxr-xr-x 2 coder coder 2 Dec 30 15:41 Templates
+drwxr-xr-X 2 coder coder 2 Dec 30 15:41 Videos
+drwxr-xr-x 2 coder coder 2 Jun 26 2023 workspace
+drwxr-xr-x 2 coder coder 4 Jun 26 2023 Desktop.save
+drwxr-xr-x 2 root root 6144 Dec 16 07:28 Desktop-ro
+drwxr-xr-x 3 coder coder 3 Jun 26 2023 data
+drwxr-xr-x 4 coder coder 4 Dec 30 15:41 coursera
+drwxr-xr-x 9 coder coder 20 Jun 26 2023 noVNC
+rw-r -- r -- 1 coder coder 11316 Jun 26 2023 package-lock.json
+-rw-r -- r -- 1 coder coder 31 Dec 30 16:15 user_info.txt
+rw-r -- r -- 1 coder coder 60 Dec 30 15:41 wm.log
+rw-r -- r -- 1 coder coder 75 Jun 26 2023 package.json
+rwxr-xr-x 1 coder coder 308 Jun 26 2023 wm_startup.sh
+rwxr-xr-X 1 coder coder 314 Jun 26 2023 wrapper_process.sh
+total 27
+//listed all files in the home directory and sorted them alphabetically for easier inspection
+
+7. Log Investigation
+grep "admin" log.txt
+Output: grep: log.txt: No such file or directory
+//searches for lines containing "admin" in the file log.txt usign "grep". File log.txt does not exist in current directory.
+
+8. System Information Check
+uname -r
+Output: 6.5.0-1024-aws
+//displayed the current Linux kernel version running on the system usign "uname -r"
+
+9. Network Connectivity Test
+ping -c 4 www.google.com
+Output: PING www.google.com (64.233.180.99) 56(84) bytes of data.
+From ip-172-18-0-1.ec2. internal (172. 18.0.1) icmp_seq=1 Destination Port Unreachable
+From ip-172-18-0-1.ec2. internal (172. 18.0.1) icmp seq=2 Destination Port Unreachable
+From ip-172-18-0-1.ec2. internal (172. 18.0.1) icmp seq=3 Destination Port Unreachable
+From ip-172-18-0-1.ec2. internal (172.18.0.1) icmp seq=4 Destination Port Unreachable
+
+www.google.com ping statistics
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3044ms
+//verified network connectivity by sending 4 ICMP packets to www.google.com but the destination is unreachable
+
+10. System Health Awareness
+uptime
+Output: 16:53:44 up 40 days, 4:10, 0 users, load average: 5.80, 6.43, 6.67
+//Displayed system uptime, number of logged-in users, and load averages to check system health and resource usage
