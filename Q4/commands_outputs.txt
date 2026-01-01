@@ -1,0 +1,64 @@
+1. System Uptime Verification
+uptime
+Output: 11:47:21 up 27 days, 19:46, 0 users, load average: 5.50, 5.59, 5.58
+//displayed how long the system has been running, the number of users logged in, and the load average using "uptime"
+
+2. User Process Listing
+ps -u $USER 
+(check screenshots for output) 
+//listed all processes currently running "ps" under my user account "$USER" to monitor active programs
+
+3. CPU Usage Analysis
+ps -u $USER -o pid,cmd,%cpu --sort=-%cpu | head -n 2
+Output: 
+PID CMD                         %CPU
+38  /usr/bin/Xvnc :1 -auth /hom 0.2
+//listed my running processes "ps" sorted by CPU usage and displays the process currently consuming the highest CPU resources using:
+"-o" to specify the output format
+"pid" to speficy process ID
+"%cpu" to specify CPU usage percentage of the process
+"--sort=-%cpu" to sort processes by CPU usage
+"-n 2" used to display the header line and the top CPU-consuming process after sorting
+
+4. Background Process Execution  
+sleep 60 &
+Output: [1] 274
+//started a sleep 60 command in the background 
+jobs
+Output: [1]+  Running                 sleep 60 &  
+//verified background command is running using "jobs"
+
+5. Process Priority Management
+renice +5 -p 274
+Output: 274 (process ID): old priority 0, new priority 5  
+//changed the niceness (priority) of process 274 from priority 0 to priority 5
+
+6. Memory Usage Monitoring
+free -h
+Output: 
+         total    used    free    shared   buff/cache   available
+Mem :    249G     98G     14G     212M     136G         148G
+Swap:    8.0G     7.9M    8.0G
+//displayed memory usage in a human-readable format "-h" to monitor total, used, free, and swap memory
+
+7. Disk Space Inspection
+df -h 
+(check screenshot for output) 
+//checked the disk space usage of the filesystem containing the home directory to monitor available and used storage
+
+8. Shell Identification
+echo $SHELL
+Output: coder
+//displayed the name of the currently used shell to confirm the command-line environment using "echo"
+
+9. Output Redirection
+uname -a > system_report.txt
+//redirected system information into system_report.txt to save a snapshot of the system state for later reference
+cat system_report.txt
+Output: Linux 68cca316b46c 6.5.0-1024-aws #24~22.04.1-Ubuntu SMP Thu Jul 18 10:43:12 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux  
+//verified output redirection  
+
+10. Disk Usage Visualization
+ncdu 
+Output: bash: ncdu: command not found
+//ncdu command was attempted to visualize disk usage interactively in the home directory, allowing navigation through directories and identifying space-consuming files, but it is not available in this restricted environment (Coursera Lab Terminal Emulator); therefore, disk usage was analyzed using du to measure directory sizes (last 10 lines) and df to inspect filesystem-level disk usage
